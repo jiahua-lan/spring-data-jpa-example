@@ -18,7 +18,9 @@ public class DepartmentRepositoryImpl implements CustomDepartmentRepository {
     @Override
     public List<Department> findAllDepartments() {
 
-        Query query = entityManager.createNativeQuery("select * from department", Department.class);
+        String sql = "select d.id as id, d.name as name from department d ";
+
+        Query query = entityManager.createNativeQuery(sql, Department.class);
 
         return (List<Department>) query.getResultList();
     }
